@@ -8,7 +8,7 @@
 
 - Change directory
     ```
-    cd/your-cypress-project
+    cd your-cypress-project
     ```
 
 - Initialize a project and create the package. json file
