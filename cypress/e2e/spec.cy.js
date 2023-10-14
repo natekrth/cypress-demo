@@ -18,4 +18,15 @@ describe('Home page', () => {
     cy.get(`#app > ul > li:nth-child(1) > form > div.btn-group > button.btn.btn__primary`).click();
     cy.get(`#app > ul > li:nth-child(1) > div > div.custom-checkbox > label`).should("contain", "Start Cypress");
   })
+
+  it('Delete item in todo list', () => {
+    cy.get(`#app > ul > li:nth-child(4) > div > div.btn-group > button.btn.btn__danger`).click();
+    cy.get("#list-summary").should("contain", "2 out of 3 items completed");
+  })
+
+  it('Add item in todo list', () => {
+    cy.get(`#new-todo-input`).type("Write more testcases", { force:true });
+    cy.get(`#app > form > button`).click();
+    cy.get("#list-summary").should("contain", "2 out of 5 items completed");
+  })
 });
