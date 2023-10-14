@@ -39,3 +39,29 @@
     ```
 
 - In cypress folder, add new folder named ```e2e``` and add new file name ```spec.cy.js```
+
+## How to write Cypress test
+
+In file ```spec.cy.js```
+
+For example, if we have a scenario like this:
+```
+Scenario: Open to do page and verify title
+    Given open todo page
+    Then verify to do title page "To-Do List"
+```
+- Scenario: Describe
+- Given: it
+
+So, we will get
+```
+describe('Home page', () => {
+  beforeEach(() => {
+    cy.visit("/")
+  })
+
+  it('Open to do page and verify title', () => {
+    cy.get("#app > h1").should("contain", "To-Do List");
+  })
+});
+```
