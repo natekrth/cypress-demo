@@ -8,7 +8,7 @@ describe('Home page', () => {
   })
 
   it('Verify label of completed todo', () => {
-    cy.get("#todo-"+1).check();
+    cy.get("#todo-1").check();
     cy.get("#list-summary").should("contain", "3 out of 4 items completed");
   })
 
