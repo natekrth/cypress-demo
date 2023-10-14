@@ -16,5 +16,5 @@ Scenario: Edit description of todo
 
 Scenario: Delete item in todo list
     Given open todo page
-    When click delete todo at 1
+    When click delete todo at 4
     Then verify completed todo item is "2 out of 3 items completed"
