@@ -50,8 +50,8 @@ Scenario: Open to do page and verify title
     Given open todo page
     Then verify to do title page "To-Do List"
 ```
-- Scenario: Describe
-- Given: it
+- Scenario: it
+- Given: 
 
 So, we will get
 ```
