@@ -69,6 +69,21 @@ describe("API Tests", () => {
         }
       }).then((response) => {
         expect(response.status).to.equal(200);
+        expect(response.body).to.have.length(3);
+      });
+    });
+  });
+
+  context("DELETE", () => {
+    it("delete fruit", () => {
+      cy.request({
+        method: "DELETE",
+        url: "http://localhost:3000/api/fruit/delete",
+        qs: {
+          deletename: "cheery",
+        }
+      }).then((response) => {
+        expect(response.status).to.equal(200);
         expect(response.body).to.have.length(2);
       });
     });
