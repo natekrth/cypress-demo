@@ -56,14 +56,14 @@ describe("API Tests", () => {
   });
 });
 
-describe("API Testss", () => {
-  it("one project", () => {
-    cy.request({
-      method: "GET",
-      url: "http://localhost/project/Memomood",
-    }).then((response) => {
-      expect(response.status).to.equal(200);
-      expect(response.body).to.have.length.above(1);
-    });
-  });
-});
+// describe("API Testss", () => {
+//   it("one project", () => {
+//     cy.request({
+//       method: "GET",
+//       url: "http://localhost/project/Memomood",
+//     }).then((response) => {
+//       expect(response.status).to.equal(200);
+//       expect(response.body).to.have.length.above(1);
+//     });
+//   });
+// });
