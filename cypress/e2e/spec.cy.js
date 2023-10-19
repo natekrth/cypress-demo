@@ -73,9 +73,7 @@ describe("API Tests", () => {
         expect(response.body).to.have.length(3);
       });
     });
-  });
-
-  context("POST", () => {
+    
     it("missing parameter", () => {
       cy.request({
         method: "POST",
@@ -85,11 +83,11 @@ describe("API Tests", () => {
           name: "cheery",
         }
       }).then((response) => {
-        print(response)
         expect(response.status).to.equal(400);
       });
     });
   });
+
 
   context("DELETE", () => {
     it("delete fruit with wrong parameter name", () => {
@@ -104,9 +102,7 @@ describe("API Tests", () => {
         expect(response.status).to.equal(404);
       });
     });
-  });
-  
-  context("DELETE", () => {
+
     it("delete fruit", () => {
       cy.request({
         method: "DELETE",
