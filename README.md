@@ -65,3 +65,11 @@ describe('Home page', () => {
   })
 });
 ```
+
+## How to get (select) component
+ ```
+    open inspector in browser
+    find component or tag of the component
+    copy selector
+    paste it in cy.get(.....)
+ ```
