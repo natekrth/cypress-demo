@@ -43,7 +43,7 @@ describe("Home page", () => {
 
 describe("API Tests", () => {
   context("GET /fruit", () => {
-    it("should retrieve a list of projects", () => {
+    it("get all fruit", () => {
       cy.request({
         method: "GET",
         url: "http://localhost:3000/api/fruit",
@@ -51,14 +51,15 @@ describe("API Tests", () => {
         // Assertions
         expect(response.status).to.equal(200);
         expect(response.body).to.have.length.above(1);
-        // expect(response.body[0]).to.have.property("name");
-        // expect(response.body[0]).to.have.property("description");
+        expect(response.body[0]).to.have.property("name");
+        expect(response.body[0]).to.have.property("price");
+        expect(response.body[0]).to.have.property("rating");
       });
     });
   });
 
   context("POST", () => {
-    it("cccc", () => {
+    it("add fruit", () => {
       cy.request({
         method: "POST",
         url: "http://localhost:3000/api/fruit/add",
@@ -74,6 +75,37 @@ describe("API Tests", () => {
     });
   });
 
+  context("POST", () => {
+    it("missing parameter", () => {
+      cy.request({
+        method: "POST",
+        url: "http://localhost:3000/api/fruit/add",
+        failOnStatusCode: false,
+        qs: {
+          name: "cheery",
+        }
+      }).then((response) => {
+        print(response)
+        expect(response.status).to.equal(400);
+      });
+    });
+  });
+
+  context("DELETE", () => {
+    it("delete fruit with wrong parameter name", () => {
+      cy.request({
+        method: "DELETE",
+        url: "http://localhost:3000/api/fruit/delete",
+        qs: {
+          names: "cheery",
+        },
+        failOnStatusCode: false,
+      }).then((response) => {
+        expect(response.status).to.equal(404);
+      });
+    });
+  });
+  
   context("DELETE", () => {
     it("delete fruit", () => {
       cy.request({
@@ -81,7 +113,8 @@ describe("API Tests", () => {
         url: "http://localhost:3000/api/fruit/delete",
         qs: {
           deletename: "cheery",
-        }
+        },
+        failOnStatusCode: false,
       }).then((response) => {
         expect(response.status).to.equal(200);
         expect(response.body).to.have.length(2);
