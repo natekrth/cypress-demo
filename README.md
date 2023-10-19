@@ -38,7 +38,9 @@
     });
     ```
 
-- In cypress folder, add new folder named ```e2e``` and add new file name ```spec.cy.js```
+- In cypress folder,
+    - add new folder named ```e2e```
+    - add new file name ```spec.cy.js```
 
 ## How to write Cypress test
 
@@ -51,7 +53,7 @@ Scenario: Open to do page and verify title
     Then verify to do title page "To-Do List"
 ```
 - Scenario: it
-- Given: 
+- Given: list of item to test
 
 So, we will get
 ```
