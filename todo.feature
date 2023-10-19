@@ -23,4 +23,4 @@ Scenario: Add item in todo list
     Given open todo page
     When type todo description in input box
     And click add
-    Then verify compled todo item is "2 out of 5 items completed"
+    Then verify completed todo item is "2 out of 5 items completed"

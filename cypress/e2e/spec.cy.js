@@ -42,16 +42,35 @@ describe("Home page", () => {
 });
 
 describe("API Tests", () => {
-  it("should retrieve a list of projects", () => {
-    cy.request({
-      method: "GET",
-      url: "http://localhost/project",
-    }).then((response) => {
-      // Assertions
-      expect(response.status).to.equal(200);
-      expect(response.body).to.have.length.above(1);
-      expect(response.body[0]).to.have.property("name");
-      expect(response.body[0]).to.have.property("description");
+  context("GET /fruit", () => {
+    it("should retrieve a list of projects", () => {
+      cy.request({
+        method: "GET",
+        url: "http://localhost:3000/api/fruit",
+      }).then((response) => {
+        // Assertions
+        expect(response.status).to.equal(200);
+        expect(response.body).to.have.length.above(1);
+        // expect(response.body[0]).to.have.property("name");
+        // expect(response.body[0]).to.have.property("description");
+      });
+    });
+  });
+
+  context("POST", () => {
+    it("cccc", () => {
+      cy.request({
+        method: "POST",
+        url: "http://localhost:3000/api/fruit/add",
+        qs: {
+          name: "cheery",
+          price: 5,
+          rating: 4.5
+        }
+      }).then((response) => {
+        expect(response.status).to.equal(200);
+        expect(response.body).to.have.length(2);
+      });
     });
   });
 });
