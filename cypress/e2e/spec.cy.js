@@ -1,18 +1,18 @@
 describe("Home page", () => {
   beforeEach(() => {
-    cy.visit("/");
+    cy.visit("/");          // BELL
   });
 
-  it("Open to do page and verify title", () => {
-    cy.get("#app > h1").should("contain", "To-Do List");
+  it("Open to do page and verify title", () => {  // BELL
+    cy.get("#app > h1").should("contain", "To-Do List");  
   });
 
-  it("Verify label of completed todo", () => {
+  it("Verify label of completed todo", () => {    // BELL
     cy.get("#todo-1").check();
     cy.get("#list-summary").should("contain", "3 out of 4 items completed");
   });
 
-  it("Edit description of todo", () => {
+  it("Edit description of todo", () => {    // REW
     cy.get(
       `#app > ul > li:nth-child(1) > div > div.btn-group > button:nth-child(1)`
     ).click();
@@ -27,22 +27,22 @@ describe("Home page", () => {
     ).should("contain", "Start Cypress");
   });
 
-  it("Delete item in todo list", () => {
+  it("Delete item in todo list", () => {   // REW
     cy.get(
       `#app > ul > li:nth-child(4) > div > div.btn-group > button.btn.btn__danger`
     ).click();
     cy.get("#list-summary").should("contain", "2 out of 3 items completed");
   });
 
-  it("Add item in todo list", () => {
+  it("Add item in todo list", () => {   // NATE
     cy.get(`#new-todo-input`).type("Write more testcases", { force: true });
     cy.get(`#app > form > button`).click();
     cy.get("#list-summary").should("contain", "2 out of 5 items completed");
   });
 });
 
-describe("API Tests", () => {
-  context("GET /fruit", () => {
+describe("API Tests", () => { 
+  context("GET /fruit", () => {     // BREEZE
     it("get all fruit", () => {
       cy.request({
         method: "GET",
@@ -58,7 +58,7 @@ describe("API Tests", () => {
     });
   });
 
-  context("POST", () => {
+  context("POST", () => {     // BREEZE
     it("add fruit", () => {
       cy.request({
         method: "POST",
@@ -74,7 +74,7 @@ describe("API Tests", () => {
       });
     });
     
-    it("missing parameter", () => {
+    it("missing parameter", () => {    // BREEZE
       cy.request({
         method: "POST",
         url: "http://localhost:3000/api/fruit/add",
@@ -89,7 +89,7 @@ describe("API Tests", () => {
   });
 
 
-  context("DELETE", () => {
+  context("DELETE", () => {       // NATE
     it("delete fruit with wrong parameter name", () => {
       cy.request({
         method: "DELETE",
@@ -103,7 +103,7 @@ describe("API Tests", () => {
       });
     });
 
-    it("delete fruit", () => {
+    it("delete fruit", () => {     // NATE
       cy.request({
         method: "DELETE",
         url: "http://localhost:3000/api/fruit/delete",
